@@ -18,7 +18,7 @@ public struct InsetLayout : IntrinsicContentLayout {
     }
 
     public func layout(in rect: CGRect) {
-        let origin = CGPoint(x: insets.left, y: insets.top)
+        let origin = rect.origin.movedTo(insets.left, insets.top)
         let size = rect.size.shrinked(by: insets)
         let contentRect = CGRect(origin: origin, size: size)
         content.layout(in: contentRect)
