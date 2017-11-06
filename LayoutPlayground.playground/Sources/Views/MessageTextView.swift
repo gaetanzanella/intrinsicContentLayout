@@ -1,6 +1,6 @@
-import Foundation
+import UIKit
 
-public class MessageTextView : UIView {
+public class MessageTextView : UIView, IntrinsicContentLayout {
 
     private let backgroundLayer = CAShapeLayer()
 
@@ -10,7 +10,7 @@ public class MessageTextView : UIView {
         return InsetLayout(content: label, insets: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
     }
 
-    var text: String? {
+    public var text: String? {
         set {
             label.text = newValue
         }
@@ -39,8 +39,8 @@ public class MessageTextView : UIView {
         backgroundLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 8).cgPath
     }
 
-    public override var intrinsicContentSize: CGSize {
-        return insetLayout.intrinsicSizeThatFits(.greatestFiniteMagnitude)
+    public override func sizeThatFits(_ size: CGSize) -> CGSize {
+        return insetLayout.intrinsicSizeThatFits(size)
     }
 
     //MARK: - Private
