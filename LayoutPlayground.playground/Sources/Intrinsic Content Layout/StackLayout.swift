@@ -14,14 +14,20 @@ public struct StackLayout : IntrinsicContentLayout {
         case horizontal, vertical
     }
 
+    public enum Orientation {
+        case left, right
+    }
+
     public var items: [IntrinsicContentLayout]
     public var spacing: CGFloat
     public var axis: Axis
+    public var orientation: Orientation
 
-    public init(items: [IntrinsicContentLayout], spacing: CGFloat, axis: Axis) {
+    public init(items: [IntrinsicContentLayout], spacing: CGFloat, axis: Axis, orientation: Orientation = .left) {
         self.items = items
         self.spacing = spacing
         self.axis = axis
+        self.orientation = orientation
     }
 
     public func layout(in rect: CGRect) {
@@ -29,6 +35,12 @@ public struct StackLayout : IntrinsicContentLayout {
         for item in items {
             let childSize = item.intrinsicSizeThatFits(rect.size)
             childRect.size = childSize
+            switch (axis, orientation) {
+            case (.vertical, .right) :
+                childRect.origin.x = rect.origin.x + rect.size.width - childRect.size.width
+            default:
+                childRect.origin.x = rect.origin.x
+            }
             item.layout(in: childRect)
             switch axis {
             case .horizontal:
