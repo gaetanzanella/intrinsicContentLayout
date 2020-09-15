@@ -5,7 +5,7 @@
 //  Created by Julien Rollet on 30/10/2018.
 //
 
-import Foundation
+import UIKit
 
 public struct ExactSizeLayout: IntrinsicContentLayout {
 

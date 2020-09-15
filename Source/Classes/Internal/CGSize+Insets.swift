@@ -9,15 +9,16 @@
 import UIKit
 
 extension CGSize {
-    public func extendedBy(dx: CGFloat, dy: CGFloat) -> CGSize {
+
+    func extendedBy(dx: CGFloat, dy: CGFloat) -> CGSize {
         return CGSize(width: width + dx, height: height + dy)
     }
 
-    public func extended(by insets: UIEdgeInsets) -> CGSize {
+    func extended(by insets: UIEdgeInsets) -> CGSize {
         return extendedBy(dx: insets.horizontal, dy: insets.vertical)
     }
 
-    public func shrinked(by insets: UIEdgeInsets) -> CGSize {
+    func shrinked(by insets: UIEdgeInsets) -> CGSize {
         return extendedBy(dx: -insets.horizontal, dy: -insets.vertical)
     }
 }

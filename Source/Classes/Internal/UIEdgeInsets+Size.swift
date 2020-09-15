@@ -8,12 +8,13 @@
 
 import UIKit
 
-public extension UIEdgeInsets {
-    public var horizontal: CGFloat {
+extension UIEdgeInsets {
+
+    var horizontal: CGFloat {
         return left + right
     }
 
-    public var vertical: CGFloat {
+    var vertical: CGFloat {
         return top + bottom
     }
 }
